@@ -1,8 +1,8 @@
-# Report a Problem
+# Let's Clean Brum
 
-A community "report a problem" tracker for Birmingham Tech Collective — and a guided, end-to-end learning project for a developer building their first full-stack app.
+A community litter clean-up event organiser for Birmingham Tech Collective — and a guided, end-to-end learning project for a developer building their first full-stack app.
 
-Residents log local issues (potholes, streetlights, fly-tipping, graffiti) via a simple form; anyone can browse reports; an admin can update status or remove a report. Deliberately kept to plain CRUD — no photos, maps, email or logins — so the focus stays on the fundamentals: a working local app, then a real, cheap, serverless deployment on AWS with infrastructure as code and CI/CD.
+Local litter-pickers post clean-up events (where, when, what to bring) via a simple form; anyone can browse upcoming events; an admin can update status or remove an event. Deliberately kept to plain CRUD — no RSVPs, photos, maps, email or logins — so the focus stays on the fundamentals: a working local app, then a real, cheap, serverless deployment on AWS with infrastructure as code and CI/CD.
 
 Full spec: [Docs/spec.md](Docs/spec.md)
 
