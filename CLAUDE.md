@@ -2,7 +2,7 @@
 
 ## What this repo is
 
-A guided, beginner-friendly build of a small full-stack CRUD app (React + FastAPI + DynamoDB, deployed serverless on AWS). The full spec is [Docs/spec.md](Docs/spec.md). The build is driven entirely by GitHub issues, worked through in order — see [README.md](README.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+A guided, beginner-friendly build of a small full-stack CRUD app (React + FastAPI + DynamoDB, deployed serverless on AWS) for organising community litter clean-up events. The full spec is [Docs/spec.md](Docs/spec.md). The build is driven entirely by GitHub issues, worked through in order — see [README.md](README.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
 
 **Important:** don't build ahead of the current issue. If asked to work on issue N, only do what issue N's acceptance criteria describe, even if the finished app obviously needs more — later issues cover the rest. The point of this repo is the incremental learning path, not the fastest route to a finished app.
 
