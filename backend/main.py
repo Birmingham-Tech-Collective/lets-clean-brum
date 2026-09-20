@@ -57,3 +57,8 @@ def create_event(event: EventCreate):
     table.put_item(Item=item)
 
     return item
+
+@app.get("/events")
+def get_events():
+    response = table.scan()
+    return response.get("Items", [])
