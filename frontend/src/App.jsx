@@ -15,8 +15,6 @@ function App() {
       date_time: formData.get('dateTime')
     }
 
-    console.log(payload)
-
     form.reset()
   }
 
