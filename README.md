@@ -15,7 +15,6 @@ Full spec: [Docs/spec.md](Docs/spec.md)
 - **Infrastructure as code:** Terraform (see [deaf-social's `infra/`](https://github.com/Birmingham-Tech-Collective/deaf-social/tree/main/infra) for the bootstrap/env pattern this follows)
 - **CI/CD:** GitHub Actions
 
-This repo is deliberately **empty of application code** — `frontend/`, `backend/` and `infra/` don't exist yet. You build them, one issue at a time.
 
 ## How to use this repo
 
@@ -36,6 +35,95 @@ For each issue: create a branch, do the work, open a PR against `main` that refe
 - [Docker](https://www.docker.com/) (for DynamoDB Local during local dev)
 - An [AWS account](https://aws.amazon.com/) (only needed from the Cloud Deployment phase onward) and the [AWS CLI](https://aws.amazon.com/cli/), configured
 - [Terraform](https://developer.hashicorp.com/terraform/install) (only needed from the Cloud Deployment phase onward)
+
+## First-time setup
+
+### Backend
+
+From the root of the repository:
+
+```bash
+cd backend
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+cd ..
+```
+
+### Frontend
+
+From the root of the repository:
+
+```bash
+cd frontend
+npm install
+cd ..
+```
+
+## Running locally
+
+Make sure Docker Desktop is running before starting the application.
+
+### 1. Start DynamoDB Local
+
+From the root of the repository:
+
+```bash
+docker compose up
+```
+
+This starts DynamoDB Local and automatically creates the `Events` table once DynamoDB is healthy.
+
+DynamoDB Local runs on:
+
+```text
+http://localhost:8001
+```
+
+### 2. Start the backend
+
+Open a second terminal and run:
+
+```bash
+cd backend
+```
+
+Then run:
+
+```bash
+.\.venv\Scripts\python.exe -m uvicorn main:app --reload
+```
+
+The FastAPI backend runs on:
+
+```text
+http://127.0.0.1:8000
+```
+
+Swagger API documentation is available at:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+### 3. Start the frontend
+
+Open a third terminal and run:
+
+```bash
+cd frontend
+```
+
+Then run:
+
+```bash
+npm.cmd run dev
+```
+
+The React application runs on:
+
+```text
+http://localhost:5173
+```
 
 ## Cost
 
