@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import './App.css'
 
 function App() {
-  function handleSubmit(event) {
+  const [eventId, setEventId] = useState(null)
+
+  async function handleSubmit(event) {
     event.preventDefault()
 
     const form = event.currentTarget
-
     const formData = new FormData(form)
 
     const payload = {
@@ -15,7 +17,29 @@ function App() {
       date_time: formData.get('dateTime')
     }
 
+    const response = await fetch('http://127.0.0.1:8000/events', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+
+    const data = await response.json()
+
+    setEventId(data.event_id)
+
     form.reset()
+  }
+
+  if (eventId) {
+    return (
+      <div>
+        <h1>Event created successfully!</h1>
+        <p>Your reference number is:</p>
+        <strong>{eventId}</strong>
+      </div>
+    )
   }
 
   return (
@@ -26,7 +50,6 @@ function App() {
       <form onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="title">Title</label>
-
           <input
             type="text"
             id="title"
@@ -38,7 +61,6 @@ function App() {
 
         <div className="form-field">
           <label htmlFor="description">Description</label>
-
           <textarea
             id="description"
             name="description"
@@ -49,7 +71,6 @@ function App() {
 
         <div className="form-field">
           <label htmlFor="location">Location</label>
-
           <input
             type="text"
             id="location"
@@ -61,7 +82,6 @@ function App() {
 
         <div className="form-field">
           <label htmlFor="dateTime">Date & time</label>
-
           <input
             type="datetime-local"
             id="dateTime"
