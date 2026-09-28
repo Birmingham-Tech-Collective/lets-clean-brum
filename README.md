@@ -67,7 +67,14 @@ From the root of the repository:
 ```bash
 cd frontend
 npm install
+Copy-Item .env.example .env.local
 cd ..
+```
+
+The `.env.local` file provides the API URL used by the frontend during local development:
+
+```text
+VITE_API_BASE_URL=http://127.0.0.1:8000
 ```
 
 ## Running locally
@@ -163,6 +170,23 @@ If there are no events, the page displays:
 
 ```text
 No clean-ups scheduled yet
+```
+### View event details
+
+Click any event row on the events page to open its detail page.
+
+Each event detail page displays:
+
+- title
+- description
+- location
+- date and time
+- status
+
+If the event does not exist, the page displays:
+
+```text
+Event not found
 ```
 
 ## Cost
