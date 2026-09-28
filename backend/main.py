@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import boto3
@@ -63,3 +63,20 @@ def create_event(event: EventCreate):
 def get_events():
     response = table.scan()
     return response.get("Items", [])
+
+
+@app.get("/events/{event_id}")
+def get_event(event_id: str):
+    response = table.get_item(
+        Key={"event_id": event_id}
+    )
+
+    event = response.get("Item")
+
+    if event is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Event not found"
+        )
+
+    return event

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import EventsPage from './EventsPage'
+import EventDetailPage from './EventDetailPage'
+import { API_BASE_URL } from './config'
 import './App.css'
 
 function App() {
@@ -9,6 +11,12 @@ function App() {
 
   if (path === '/events') {
     return <EventsPage />
+  }
+
+  if (path.startsWith('/events/')) {
+    const eventIdFromPath = path.split('/events/')[1]
+
+    return <EventDetailPage eventId={eventIdFromPath} />
   }
   
   async function handleSubmit(event) {
@@ -24,7 +32,7 @@ function App() {
       date_time: formData.get('dateTime')
     }
 
-    const response = await fetch('http://127.0.0.1:8000/events', {
+    const response = await fetch(`${API_BASE_URL}/events`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

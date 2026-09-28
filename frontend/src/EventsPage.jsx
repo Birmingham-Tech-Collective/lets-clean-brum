@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
+import { API_BASE_URL } from './config'
 
 function EventsPage() {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
     async function fetchEvents() {
-      const response = await fetch('http://127.0.0.1:8000/events')
+      const response = await fetch(`${API_BASE_URL}/events`)
       const data = await response.json()
 
       setEvents(data)
@@ -33,7 +34,13 @@ function EventsPage() {
 
           <tbody>
             {events.map((event) => (
-              <tr key={event.event_id}>
+            <tr
+              key={event.event_id}
+              className="clickable-row"
+              onClick={() => {
+                window.location.href = `/events/${event.event_id}`
+              }}
+            >
                 <td>{event.title}</td>
                 <td>{event.location}</td>
                 <td>{event.date_time}</td>
