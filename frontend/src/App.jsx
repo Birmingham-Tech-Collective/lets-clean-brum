@@ -1,9 +1,16 @@
 import { useState } from 'react'
+import EventsPage from './EventsPage'
 import './App.css'
 
 function App() {
   const [eventId, setEventId] = useState(null)
 
+  const path = window.location.pathname
+
+  if (path === '/events') {
+    return <EventsPage />
+  }
+  
   async function handleSubmit(event) {
     event.preventDefault()
 
