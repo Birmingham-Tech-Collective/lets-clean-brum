@@ -33,3 +33,7 @@ td {
 th {
   font-weight: bold;
 }
+
+.clickable-row {
+  cursor: pointer;
+}
